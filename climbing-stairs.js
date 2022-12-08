@@ -5,7 +5,7 @@
  */
 
 const factor = function (num) {
-  var result = num;
+  let result = num;
   if (num === 0 || num === 1) 
     return 1; 
   while (num > 1) { 
@@ -19,9 +19,7 @@ const climbStairs = function(n) {
     let result = 0;
     for (let twos=0; twos <= Math.floor(n/2); twos++) {
         let ones = n - twos * 2;
-        let [nums, places] = [0, 0];
         result += factor(ones+twos) / ( factor(ones) * factor(twos) )
-        console.log(ones, twos, result)
     }
     return result;
 };
