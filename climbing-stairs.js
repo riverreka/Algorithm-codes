@@ -3,18 +3,25 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
+
+const factor = function (num) {
+  var result = num;
+  if (num === 0 || num === 1) 
+    return 1; 
+  while (num > 1) { 
+    num--;
+    result *= num;
+  }
+  return result;
+}
+
+const climbStairs = function(n) {
     let result = 0;
     for (let twos=0; twos <= Math.floor(n/2); twos++) {
-        let ones = n-twos*2;
-        let places = ones+1;
-        let factorial = 1;
-        while (places > places-twos && places > 1) { 
-            factorial = places;
-            places--;
-            factorial *= places;
-        }
-        result += factorial;
+        let ones = n - twos * 2;
+        let [nums, places] = [0, 0];
+        result += factor(ones+twos) / ( factor(ones) * factor(twos) )
+        console.log(ones, twos, result)
     }
     return result;
 };
